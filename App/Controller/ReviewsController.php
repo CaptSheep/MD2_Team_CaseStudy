@@ -35,7 +35,7 @@ class ReviewsController
 
     public function detail()
     {
-        $review = $this->review->getById();
+        $review = $this->review->getById($_GET["id"]);
         include "App/View/review/detail.php";
     }
 
@@ -45,7 +45,7 @@ class ReviewsController
             $review = $this->review->getById($_GET["id"]);
             include "App/View/review/edit.php";
         }else {
-            $this->review->editReview($_POST,$_REQUEST["id"]);
+            $this->review->editReview($_POST,$_GET["id"]);
             header("location:index.php?page=review-list");
         }
     }

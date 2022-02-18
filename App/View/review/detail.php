@@ -1,4 +1,4 @@
-<table>
+<table border="10">
     <tr>
         <th>ID</th>
         <th>Content</th>

@@ -20,7 +20,7 @@ $page =$_GET["page"] ?? "";
 <body>
 <a href="index.php?page=authors-list">Authour List</a>
 <a href="index.php?page=authors-create">Create</a>
-<a href="index.php?page=review-list">Review list</a>
+<a href="index.php?page=review-list">Review List</a>
 
 <?php
 switch ($page){
