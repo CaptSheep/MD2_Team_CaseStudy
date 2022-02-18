@@ -40,3 +40,9 @@ CREATE TABLE Roles(
                       id int PRIMARY KEY AUTO_INCREMENT,
                       name varchar(255)
 );
+
+CREATE  table Users(
+    id int primary key AUTO_INCREMENT,
+    Student_code int not null,
+    Role_id int not null
+);

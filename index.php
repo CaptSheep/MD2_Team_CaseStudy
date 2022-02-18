@@ -1,7 +1,9 @@
 <?php
 require "vendor/autoload.php";
 use App\Controller\AuthorsController;
+use App\Controller\PublishersController;
 $author = new AuthorsController;
+$publisher = new PublishersController;
 $page =$_GET["page"] ?? "";
 ?>
 <!doctype html>
@@ -14,24 +16,48 @@ $page =$_GET["page"] ?? "";
     <title>Document</title>
 </head>
 <body>
-<a href="index.php?page=authors-list">List</a>
-<a href="index.php?page=authors-create">Create</a>
+<a href="index.php?page=author-list">Authors List</a>
+<a href="index.php?page=publisher-list">Publishers List</a>
+
 <?php
 switch ($page){
-    case "authors-list":
+    case "author-list":
         $author->getAllAuthor();
         break;
-    case "authors-create":
+    case "author-create":
        if($_SERVER["REQUEST_METHOD"] == "GET"){
-           $author->showForm();
+           $author->showFormCreate();
        }
        else{
            $author->createAuthors($_POST);
        }
        break;
-    case "authors-delete":
+    case "author-delete":
         $author->deleteAuthor($_REQUEST["id"]);
         break;
+    case "author-detail":
+        $author->detailAuthor();
+        break;
+    case "author-update":
+            $author->updateAuthor($_POST,$_REQUEST["id"]);
+        break;
+    case "publisher-list":
+        $publisher->getAllPublisher();
+        break;
+    case "publisher-create":
+        if($_SERVER["REQUEST_METHOD"] == "GET"){
+            $publisher->showFormCreate();
+        }
+        else{
+            $publisher->createPublisher($_POST);
+        }
+        break;
+    case "publisher-detail":
+        $publisher->detailPublisher();
+        break;
+    case "publisher-update":
+        $publisher->updatePublisher($_POST,$_REQUEST["id"]);
+
 }
 ?>
 
