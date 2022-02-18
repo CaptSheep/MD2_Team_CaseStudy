@@ -27,15 +27,16 @@ create table Books(
                       foreign key (review_id) references Reviews(id)
 );
 
-alter table Reviews add foreign key (book_id) references Books(id)
+alter table Reviews add foreign key (book_id) references Books(id);
+
+create table Publishers(
+                           id int auto_increment primary key,
+                           name varchar(255)
+);
+alter table Books add Publishers_id int;
+alter table Books add foreign key (Publishers_id) references Books(id);
 
 CREATE TABLE Roles(
                       id int PRIMARY KEY AUTO_INCREMENT,
                       name varchar(255)
-);
-
-CREATE TABLE Roles(
-                      id int PRIMARY KEY AUTO_INCREMENT,
-                      name varchar(255),
-                      FOREIGN KEY (id) REFERENCES Users(Role)
 );
