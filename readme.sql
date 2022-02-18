@@ -34,9 +34,11 @@ create table Publishers(
                            name varchar(255)
 );
 alter table Books add Publisher_id int;
-alter table Books add foreign key (Publisher_id) references Books(id);
+alter table  add foreign key (Publisher_id) references Books(id);
 
 CREATE TABLE Roles(
                       id int PRIMARY KEY AUTO_INCREMENT,
                       name varchar(255)
 );
+alter table Books
+    add foreign key (rublisher_id) references Publishers(id);
