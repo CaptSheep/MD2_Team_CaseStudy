@@ -1,7 +1,11 @@
 <?php
 require "vendor/autoload.php";
 use App\Controller\AuthorsController;
+use App\Controller\ReviewsController;
+
 $author = new AuthorsController;
+$review = new ReviewsController;
+
 $page =$_GET["page"] ?? "";
 ?>
 <!doctype html>
@@ -14,8 +18,9 @@ $page =$_GET["page"] ?? "";
     <title>Document</title>
 </head>
 <body>
-<a href="index.php?page=authors-list">List</a>
+<a href="index.php?page=authors-list">Authour List</a>
 <a href="index.php?page=authors-create">Create</a>
+
 <?php
 switch ($page){
     case "authors-list":
@@ -31,6 +36,9 @@ switch ($page){
        break;
     case "authors-delete":
         $author->deleteAuthor($_REQUEST["id"]);
+        break;
+    case "review-list":
+        $review->showReview();
         break;
 }
 ?>
