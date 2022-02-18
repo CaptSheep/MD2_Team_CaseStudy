@@ -26,7 +26,7 @@ class BaseModel
     }
     public function deleteById($id){
         $sql = "delete from $this->table where id = $id";
-        $stmt = $this->connect->query($sql);
+        $this->connect->query($sql);
 
     }
 }
