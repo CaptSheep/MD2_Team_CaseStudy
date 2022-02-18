@@ -20,6 +20,7 @@ $page =$_GET["page"] ?? "";
 <body>
 <a href="index.php?page=authors-list">Authour List</a>
 <a href="index.php?page=authors-create">Create</a>
+<a href="index.php?page=review-list">Review list</a>
 
 <?php
 switch ($page){
@@ -39,6 +40,19 @@ switch ($page){
         break;
     case "review-list":
         $review->showReview();
+        break;
+    case "review-delete":
+        $id = $_GET["id"];
+        $review->delete($id);
+        break;
+    case "review-create":
+       $review->create();
+        break;
+    case "review-detail":
+        $review->detail();
+        break;
+    case "review-edit":
+        $review->edit();
         break;
 }
 ?>
