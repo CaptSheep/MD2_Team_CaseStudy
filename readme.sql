@@ -29,3 +29,13 @@ create table Books(
 
 alter table Reviews add foreign key (book_id) references Books(id)
 
+CREATE TABLE Roles(
+                      id int PRIMARY KEY AUTO_INCREMENT,
+                      name varchar(255)
+);
+
+CREATE TABLE Roles(
+                      id int PRIMARY KEY AUTO_INCREMENT,
+                      name varchar(255),
+                      FOREIGN KEY (id) REFERENCES Users(Role)
+);
