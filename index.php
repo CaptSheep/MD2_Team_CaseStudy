@@ -2,8 +2,10 @@
 require "vendor/autoload.php";
 use App\Controller\AuthorsController;
 use App\Controller\PublishersController;
+use App\Controller\ReviewsController;
 $author = new AuthorsController;
 $publisher = new PublishersController;
+$review = new ReviewsController;
 $page =$_GET["page"] ?? "";
 ?>
 <!doctype html>
@@ -18,7 +20,7 @@ $page =$_GET["page"] ?? "";
 <body>
 <a href="index.php?page=author-list">Authors List</a>
 <a href="index.php?page=publisher-list">Publishers List</a>
-
+<a href="index.php?page=review-list">Review List</a>
 <?php
 switch ($page){
     case "author-list":
@@ -57,7 +59,21 @@ switch ($page){
         break;
     case "publisher-update":
         $publisher->updatePublisher($_POST,$_REQUEST["id"]);
-
+    case "review-list":
+        $review->showReview();
+        break;
+    case "review-delete":
+        $review->delete();
+        break;
+    case "review-create":
+        $review->create();
+        break;
+    case "review-detail":
+        $review->detail();
+        break;
+    case "review-edit":
+        $review->edit();
+        break;
 }
 ?>
 

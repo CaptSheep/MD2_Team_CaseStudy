@@ -17,9 +17,9 @@ class ReviewsController
         include "App/View/review/list.php";
     }
 
-    public function delete($id)
+    public function delete()
     {
-        $this->review->deleteById($id);
+        $this->review->deleteById($_GET["id"]);
         header("location:index.php?page=review-list");
     }
 
