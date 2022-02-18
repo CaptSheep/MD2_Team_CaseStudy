@@ -2,7 +2,8 @@
 
 namespace App\Model;
 
-class GenreModel
+class GenreModel extends BaseModel
 {
+    public $table = "genre";
 
 }

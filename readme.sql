@@ -33,6 +33,6 @@ create table Publishers(
                            id int auto_increment primary key,
                            name varchar(255)
 );
-alter table Books add Publishers_id int;
-alter table Books add foreign key (Publishers_id) references Books(id);
+alter table Books add Publisher_id int;
+alter table Books add foreign key (Publisher_id) references Books(id);
 
