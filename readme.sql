@@ -33,16 +33,21 @@ create table Publishers(
                            id int auto_increment primary key,
                            name varchar(255)
 );
-alter table Books add Publishers_id int;
-alter table Books add foreign key (Publishers_id) references Books(id);
+alter table Books add Publisher_id int;
+alter table  add foreign key (Publisher_id) references Books(id);
 
 CREATE TABLE Roles(
                       id int PRIMARY KEY AUTO_INCREMENT,
                       name varchar(255)
 );
+<<<<<<< HEAD
 
 CREATE  table Users(
     id int primary key AUTO_INCREMENT,
     Student_code int not null,
     Role_id int not null
 );
+=======
+alter table Books
+    add foreign key (rublisher_id) references Publishers(id);
+>>>>>>> 7b341a9697f81d5723ff837daf79613f1a616c71
