@@ -14,7 +14,8 @@
             <td><?php echo $key + 1 ?></td>
             <td><?php echo $review->content ?></td>
             <td><?php echo $review->book_id ?></td>
-            <td onclick="return confirm('Are you sure?')"><a href="index.php?page=review-delete&id=<?php echo $review->id ?>">Delete</a></td>
+            <td onclick="return confirm('Are you sure?')"><a
+                        href="index.php?page=review-delete&id=<?php echo $review->id ?>">Delete</a></td>
             <td><a href="index.php?page=review-detail&id=<?php echo $review->id ?>">Detail</a></td>
             <td><a href="index.php?page=review-edit&id=<?php echo $review->id ?>">Edit</a></td>
         </tr>
