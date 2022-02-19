@@ -1,7 +1,7 @@
 create table Authors(
                         id int primary key auto_increment,
                         name varchar(255),
-                        info varchar(255),
+                        info varchar(255)
 );
 
 create table Genre(
@@ -15,6 +15,11 @@ create table Reviews(
                         book_id int
 );
 
+create table Publishers(
+                           id int auto_increment primary key,
+                           name varchar(255)
+);
+
 create table Books(
                       id int primary key auto_increment,
                       name varchar(1000),
@@ -22,19 +27,11 @@ create table Books(
                       genre_id int not null ,
                       author_id int not null,
                       review_id int not null,
+                      publisher_id int not null,
                       foreign key (genre_id) references Genre(id),
                       foreign key (author_id) references Authors(id),
                       foreign key (review_id) references Reviews(id)
 );
-
-alter table Reviews add foreign key (book_id) references Books(id);
-
-create table Publishers(
-                           id int auto_increment primary key,
-                           name varchar(255)
-);
-alter table Books add Publisher_id int;
-alter table  add foreign key (Publisher_id) references Books(id);
 
 CREATE TABLE Roles(
                       id int PRIMARY KEY AUTO_INCREMENT,
@@ -42,11 +39,7 @@ CREATE TABLE Roles(
 );
 <<<<<<< HEAD
 
-CREATE  table Users(
-    id int primary key AUTO_INCREMENT,
-    Student_code int not null,
-    Role_id int not null
-);
+
 =======
 alter table Books
     add foreign key (rublisher_id) references Publishers(id);

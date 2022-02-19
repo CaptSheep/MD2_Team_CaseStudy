@@ -10,10 +10,16 @@ use App\Controller\ReviewsController;
 $author = new AuthorsController;
 $publisher = new PublishersController;
 $review = new ReviewsController;
+
+$user = new UsersController;
+$page = $_GET["page"] ?? "";
+
 $book = new BooksController();
 $genre = new GenreController();
 
 $page = $_GET["page"] ?? "";
+$page =$_GET["page"] ?? "";
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,6 +33,14 @@ $page = $_GET["page"] ?? "";
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 <body>
+<a href="index.php?page=author-list">List</a>
+<a href="index.php?page=author-create">Create</a>
+<a href="index.php?page=genre-list">Genre List</a>
+<a href="index.php?page=book-list">Book List</a>
+<a href="index.php?page=author-list">Authors List</a>
+<a href="index.php?page=publisher-list">Publishers List</a>
+<a href="index.php?page=review-list">Review List</a>
+<a href="index.php?page=user-list">User List</a>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="home.php">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -82,9 +96,21 @@ switch ($page) {
         $author->getAllAuthor();
         break;
     case "author-create":
+
+
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $author->showFormCreate();
         } else {
+
+
+        if($_SERVER["REQUEST_METHOD"] == "GET"){
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            $author->showFormCreate();
+        } else {
+        }
+        else{
+
+
             $author->createAuthors($_POST);
         }
         break;
@@ -96,6 +122,14 @@ switch ($page) {
         break;
     case "author-update":
         $author->updateAuthor($_POST, $_REQUEST["id"]);
+
+
+        $author->updateAuthor($_POST, $_REQUEST["id"]);
+
+
+        $author->updateAuthor($_POST,$_REQUEST["id"]);
+
+
         break;
     case "publisher-list":
         $publisher->getAllPublisher();
@@ -113,6 +147,16 @@ switch ($page) {
     case "publisher-update":
         $publisher->updatePublisher($_POST, $_REQUEST["id"]);
         break;
+
+
+        $publisher->updatePublisher($_POST, $_REQUEST["id"]);
+
+
+        $publisher->updatePublisher($_POST,$_REQUEST["id"]);
+
+
+
+
     case "review-list":
         $review->showReview();
         break;
@@ -128,6 +172,50 @@ switch ($page) {
     case "review-edit":
         $review->edit();
         break;
+    case "review-create":
+        $review->create();
+        break;
+    case "review-detail":
+        $review->detail();
+        break;
+    case "review-edit":
+        $review->edit();
+        break;
+
+
+    case "user-list":
+        $user->showUser();
+        break;
+    case "user-detail":
+        $user->detailUser();
+        break;
+    case "user-delete":
+        $user->deleteUser();
+        break;
+    case "user-create":
+        $user->createUsers();
+        break;
+    case "user-edit":
+        $user->editUser();
+        break;
+
+
+
+    case "genre-list":
+        $genre->getAll();
+        break;
+    case "genre-delete":
+        $genre->delete();
+        break;
+    case "genre-detail":
+        $genre->getById();
+        break;
+    case "genre-create":
+        $genre->create();
+        break;
+    case "genre-edit":
+        $genre->edit();
+        break;
     case "book-list":
         $book->getAll();
         break;
@@ -142,13 +230,21 @@ switch ($page) {
         break;
     case "genre-create":
         $genre->create();
+    case "book-create":
+        $book->create();
         break;
     case "genre-detail":
         $genre->getById();
+    case "book-edit":
+        $book->edit();
         break;
     case "genre-edit":
         $genre->edit();
         break;
+
+
+    default:
+
 
 }
 ?>

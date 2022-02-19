@@ -1,3 +1,4 @@
+<a href="index.php?page=book-create">Create New Book</a>
 <table border="5">
     <thead>
     <tr>
