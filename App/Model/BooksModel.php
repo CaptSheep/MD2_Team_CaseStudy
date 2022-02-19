@@ -44,8 +44,13 @@ class BooksModel extends BaseModel
     public function create($data)
     {
         $genre = new GenreModel();
+        $genre->getAll();
         $author = new AuthorsModel();
+        $author->getAll();
         $review= new ReviewsModel();
+        $review->getAll();
+        $publisher = new PublishersModel();
+        $publisher->getAll();
 
         $sql = "insert into Books(name, quantity, genre_id, author_id, review_id, publisher_id) values (?, ?, ?, ?, ?, ?)";
         $stmt = $this->connect->prepare($sql);

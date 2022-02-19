@@ -8,10 +8,10 @@ class PublishersModel extends BaseModel
 
     public function createPublisher($data)
     {
-        $sql = "insert into $this->table(id,name) values (?,?)";
+        $sql = "insert into $this->table(name) values (?)";
         $stmt = $this->connect->prepare($sql);
-        $stmt->bindParam(1, $id);
-        $stmt->bindParam(2, $data["name"]);
+
+        $stmt->bindParam(1, $data["name"]);
         $stmt->execute();
     }
 
