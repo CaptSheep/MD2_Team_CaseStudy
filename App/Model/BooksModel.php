@@ -38,20 +38,11 @@ class BooksModel extends BaseModel
     {
         $sql="delete from Books where Books.id = $id";
         $this->connect->query($sql);
-        header("location:index.php?page=book-list");
+//        header("location:index.php?page=book-list");
     }
 
     public function create($data)
     {
-        $genre = new GenreModel();
-        $genre->getAll();
-        $author = new AuthorsModel();
-        $author->getAll();
-        $review= new ReviewsModel();
-        $review->getAll();
-        $publisher = new PublishersModel();
-        $publisher->getAll();
-
         $sql = "insert into Books(name, quantity, genre_id, author_id, review_id, publisher_id) values (?, ?, ?, ?, ?, ?)";
         $stmt = $this->connect->prepare($sql);
         $stmt->bindParam(1, $data["name"]);

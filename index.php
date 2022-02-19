@@ -69,23 +69,14 @@ switch ($page){
         break;
     case "publisher-update":
         $publisher->updatePublisher($_POST,$_REQUEST["id"]);
+
+
     case "review-list":
         $review->showReview();
         break;
     case "review-delete":
         $review->delete();
         break;
-    case "book-list":
-        $book->getAll();
-        break;
-    case "book-detail":
-        $book->getById();
-        break;
-
-    case "book-delete":
-        $book->delete();
-        break;
-    default:
     case "review-create":
         $review->create();
         break;
@@ -95,6 +86,22 @@ switch ($page){
     case "review-edit":
         $review->edit();
         break;
+
+
+    case "book-list":
+        $book->getAll();
+        break;
+    case "book-detail":
+        $book->getById();
+        break;
+    case "book-delete":
+        $book->delete();
+        break;
+    case "book-create":
+        $book->create();
+        break;
+
+    default:
 }
 ?>
 

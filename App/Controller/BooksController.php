@@ -1,6 +1,10 @@
 <?php
 namespace App\Controller;
+use App\Model\AuthorsModel;
 use App\Model\BooksModel;
+use App\Model\GenreModel;
+use App\Model\PublishersModel;
+use App\Model\ReviewsModel;
 
 class BooksController
 {
@@ -28,24 +32,29 @@ class BooksController
     public function delete()
     {
         $this->book->deleteById($_REQUEST["id"]);
-        header("location:index.php?page=book-delete");
+        header("location:index.php?page=book-list");
     }
 
     public function create()
     {
-        $data = [
-            "name" => $_REQUEST["name"],
-            "quantity" => $_REQUEST["quantity"],
-            "genre" => $_REQUEST["genre"],
-            "author" => $_REQUEST["author"],
-            "review" => $_REQUEST["review"],
-            "publisher" => $_REQUEST["publisher"],
-        ];
+
         if($_SERVER["REQUEST_METHOD"]=="GET"){
+            $genre = new GenreModel();
+            $genres= $genre->getAll();
+
+            $author = new AuthorsModel();
+            $authors = $author->getAll();
+
+            $review= new ReviewsModel();
+            $reviews= $review->getAll();
+
+            $publisher = new PublishersModel();
+            $publishers= $publisher->getAll();
+
             include "App/View/book/create.php";
         }else{
             $this->book->create($_POST);
-            include "App/View/book/list.php";
+            header("location:index.php?page=book-list");
         }
 
     }
