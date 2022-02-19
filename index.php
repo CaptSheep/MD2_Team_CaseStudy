@@ -100,6 +100,9 @@ switch ($page){
     case "book-create":
         $book->create();
         break;
+    case "book-edit":
+        $book->edit();
+        break;
 
     default:
 }

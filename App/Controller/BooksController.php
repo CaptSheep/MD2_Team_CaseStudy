@@ -56,6 +56,28 @@ class BooksController
             $this->book->create($_POST);
             header("location:index.php?page=book-list");
         }
+    }
 
+    public function edit()
+    {
+        if($_SERVER["REQUEST_METHOD"]=="GET"){
+            $genre = new GenreModel();
+            $genres= $genre->getAll();
+
+            $author = new AuthorsModel();
+            $authors = $author->getAll();
+
+            $review= new ReviewsModel();
+            $reviews= $review->getAll();
+
+            $publisher = new PublishersModel();
+            $publishers= $publisher->getAll();
+            $bookId = $this->book->getById($_REQUEST["id"]);
+            include "App/View/book/edit.php";
+        }else{
+
+            $this->book->edit($_POST, $_REQUEST["id"]);
+            header("location:index.php?page=book-list");
+        }
     }
 }

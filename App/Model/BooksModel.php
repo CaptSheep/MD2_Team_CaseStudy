@@ -54,4 +54,18 @@ class BooksModel extends BaseModel
         $stmt->execute();
     }
 
+    public function edit($data, $id)
+    {
+        $sql = "update Books set name = ?, quantity=?, genre_id=?, author_id=?, review_id=?, publisher_id=? where id = ?";
+        $stmt = $this->connect->prepare($sql);
+        $stmt->bindParam(1, $data["name"]);
+        $stmt->bindParam(2, $data["quantity"]);
+        $stmt->bindParam(3, $data["genre"]);
+        $stmt->bindParam(4, $data["author"]);
+        $stmt->bindParam(5, $data["review"]);
+        $stmt->bindParam(6, $data["publisher"]);
+        $stmt->bindParam(7, $id);
+        $stmt->execute();
+    }
+
 }
