@@ -1,11 +1,12 @@
 <?php
 require "vendor/autoload.php";
 use App\Controller\AuthorsController;
+use App\Controller\BooksController;
 use App\Controller\GenreController;
 
 $genre = new GenreController();
 $author = new AuthorsController;
-
+$book = new BooksController();
 
 $page =$_GET["page"] ?? "";
 ?>
@@ -23,6 +24,8 @@ $page =$_GET["page"] ?? "";
 <a href="index.php?page=authors-create">Create</a>
 
 <a href="index.php?page=genre-list">Genre List</a>
+
+<a href="index.php?page=book-list">Book List</a>
 <?php
 switch ($page){
     case "authors-list":
@@ -54,7 +57,16 @@ switch ($page){
     case "genre-edit":
         $genre->edit();
         break;
+    case "book-list":
+        $book->getAll();
+        break;
+    case "book-detail":
+        $book->getById();
+        break;
 
+    case "book-delete":
+        $book->delete();
+        break;
     default:
 }
 ?>
