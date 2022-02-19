@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controller;
+
 use App\Model\ReviewsModel;
 
 class ReviewsController
@@ -25,9 +27,9 @@ class ReviewsController
 
     public function create()
     {
-        if ($_SERVER["REQUEST_METHOD"]=="GET"){
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
             include "App/View/review/create.php";
-        }else {
+        } else {
             $this->review->createReview($_POST);
             header("location:index.php?page=review-list");
         }
@@ -41,11 +43,11 @@ class ReviewsController
 
     public function edit()
     {
-        if ($_SERVER["REQUEST_METHOD"]=="GET"){
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $review = $this->review->getById($_GET["id"]);
             include "App/View/review/edit.php";
-        }else {
-            $this->review->editReview($_POST,$_GET["id"]);
+        } else {
+            $this->review->editReview($_POST, $_REQUEST["id"]);
             header("location:index.php?page=review-list");
         }
     }
