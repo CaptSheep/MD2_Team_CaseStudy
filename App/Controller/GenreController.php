@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use App\Model\BooksModel;
 use App\Model\GenreModel;
 
 class GenreController
@@ -17,7 +18,8 @@ class GenreController
     }
 
     public function delete()
-    {
+    {  $book = new BooksModel();
+        $book->deleteById($_REQUEST["id"]);
         $this->genre->deleteById($_REQUEST["id"]);
         header("location:index.php?page=genre-list");
     }

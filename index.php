@@ -2,15 +2,27 @@
 require "vendor/autoload.php";
 
 use App\Controller\AuthorsController;
+use App\Controller\BooksController;
+use App\Controller\GenreController;
 use App\Controller\PublishersController;
 use App\Controller\ReviewsController;
+
 use App\Controller\UsersController;
+
+
 
 $author = new AuthorsController;
 $publisher = new PublishersController;
 $review = new ReviewsController;
+
 $user = new UsersController;
 $page = $_GET["page"] ?? "";
+
+$book = new BooksController();
+$genre = new GenreController();
+
+$page =$_GET["page"] ?? "";
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,6 +34,10 @@ $page = $_GET["page"] ?? "";
     <title>Document</title>
 </head>
 <body>
+<a href="index.php?page=author-list">List</a>
+<a href="index.php?page=author-create">Create</a>
+<a href="index.php?page=genre-list">Genre List</a>
+<a href="index.php?page=book-list">Book List</a>
 <a href="index.php?page=author-list">Authors List</a>
 <a href="index.php?page=publisher-list">Publishers List</a>
 <a href="index.php?page=review-list">Review List</a>
@@ -32,9 +48,19 @@ switch ($page) {
         $author->getAllAuthor();
         break;
     case "author-create":
+
+    
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $author->showFormCreate();
         } else {
+
+          
+        if($_SERVER["REQUEST_METHOD"] == "GET"){
+            $author->showFormCreate();
+        }
+        else{
+
+          
             $author->createAuthors($_POST);
         }
         break;
@@ -45,7 +71,14 @@ switch ($page) {
         $author->detailAuthor();
         break;
     case "author-update":
+
+          
         $author->updateAuthor($_POST, $_REQUEST["id"]);
+
+          
+        $author->updateAuthor($_POST,$_REQUEST["id"]);
+
+          
         break;
     case "publisher-list":
         $publisher->getAllPublisher();
@@ -61,7 +94,16 @@ switch ($page) {
         $publisher->detailPublisher();
         break;
     case "publisher-update":
+
+          
         $publisher->updatePublisher($_POST, $_REQUEST["id"]);
+
+          
+        $publisher->updatePublisher($_POST,$_REQUEST["id"]);
+
+
+
+          
     case "review-list":
         $review->showReview();
         break;
@@ -77,6 +119,8 @@ switch ($page) {
     case "review-edit":
         $review->edit();
         break;
+
+          
     case "user-list":
         $user->showUser();
         break;
@@ -92,6 +136,43 @@ switch ($page) {
     case "user-edit":
         $user->editUser();
         break;
+
+          
+
+    case "genre-list":
+        $genre->getAll();
+        break;
+    case "genre-delete":
+        $genre->delete();
+        break;
+    case "genre-detail":
+        $genre->getById();
+        break;
+    case "genre-create":
+        $genre->create();
+        break;
+    case "genre-edit":
+        $genre->edit();
+        break;
+    case "book-list":
+        $book->getAll();
+        break;
+    case "book-detail":
+        $book->getById();
+        break;
+    case "book-delete":
+        $book->delete();
+        break;
+    case "book-create":
+        $book->create();
+        break;
+    case "book-edit":
+        $book->edit();
+        break;
+
+    default:
+
+          
 }
 ?>
 

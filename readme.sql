@@ -44,3 +44,5 @@ CREATE TABLE Roles(
 alter table Books
     add foreign key (rublisher_id) references Publishers(id);
 >>>>>>> 7b341a9697f81d5723ff837daf79613f1a616c71
+
+alter table Books add constraint foreign key (genre_id) references genres(id);
