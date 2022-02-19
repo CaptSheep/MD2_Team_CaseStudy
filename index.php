@@ -3,14 +3,14 @@ require "vendor/autoload.php";
 use App\Controller\AuthorsController;
 use App\Controller\BooksController;
 use App\Controller\GenreController;
-
-$genre = new GenreController();
 use App\Controller\PublishersController;
 use App\Controller\ReviewsController;
+
 $author = new AuthorsController;
 $publisher = new PublishersController;
 $review = new ReviewsController;
 $book = new BooksController();
+$genre = new GenreController();
 
 $page =$_GET["page"] ?? "";
 ?>
@@ -24,11 +24,9 @@ $page =$_GET["page"] ?? "";
     <title>Document</title>
 </head>
 <body>
-<a href="index.php?page=authors-list">List</a>
-<a href="index.php?page=authors-create">Create</a>
-
+<a href="index.php?page=author-list">List</a>
+<a href="index.php?page=author-create">Create</a>
 <a href="index.php?page=genre-list">Genre List</a>
-
 <a href="index.php?page=book-list">Book List</a>
 <a href="index.php?page=author-list">Authors List</a>
 <a href="index.php?page=publisher-list">Publishers List</a>
@@ -39,13 +37,13 @@ switch ($page){
         $author->getAllAuthor();
         break;
     case "author-create":
-       if($_SERVER["REQUEST_METHOD"] == "GET"){
-           $author->showFormCreate();
-       }
-       else{
-           $author->createAuthors($_POST);
-       }
-       break;
+        if($_SERVER["REQUEST_METHOD"] == "GET"){
+            $author->showFormCreate();
+        }
+        else{
+            $author->createAuthors($_POST);
+        }
+        break;
     case "author-delete":
         $author->deleteAuthor($_REQUEST["id"]);
         break;
@@ -53,7 +51,7 @@ switch ($page){
         $author->detailAuthor();
         break;
     case "author-update":
-            $author->updateAuthor($_POST,$_REQUEST["id"]);
+        $author->updateAuthor($_POST,$_REQUEST["id"]);
         break;
     case "publisher-list":
         $publisher->getAllPublisher();
