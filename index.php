@@ -5,7 +5,11 @@ use App\Controller\BooksController;
 use App\Controller\GenreController;
 
 $genre = new GenreController();
+use App\Controller\PublishersController;
+use App\Controller\ReviewsController;
 $author = new AuthorsController;
+$publisher = new PublishersController;
+$review = new ReviewsController;
 $book = new BooksController();
 
 $page =$_GET["page"] ?? "";
@@ -26,36 +30,52 @@ $page =$_GET["page"] ?? "";
 <a href="index.php?page=genre-list">Genre List</a>
 
 <a href="index.php?page=book-list">Book List</a>
+<a href="index.php?page=author-list">Authors List</a>
+<a href="index.php?page=publisher-list">Publishers List</a>
+<a href="index.php?page=review-list">Review List</a>
 <?php
 switch ($page){
-    case "authors-list":
+    case "author-list":
         $author->getAllAuthor();
         break;
-    case "authors-create":
+    case "author-create":
        if($_SERVER["REQUEST_METHOD"] == "GET"){
-           $author->showForm();
+           $author->showFormCreate();
        }
        else{
            $author->createAuthors($_POST);
        }
        break;
-    case "authors-delete":
+    case "author-delete":
         $author->deleteAuthor($_REQUEST["id"]);
         break;
-    case "genre-list":
-        $genre->getAll();
+    case "author-detail":
+        $author->detailAuthor();
         break;
-    case "genre-delete":
-        $genre->delete();
+    case "author-update":
+            $author->updateAuthor($_POST,$_REQUEST["id"]);
         break;
-    case "genre-detail":
-        $genre->getById();
+    case "publisher-list":
+        $publisher->getAllPublisher();
         break;
-    case "genre-create":
-        $genre->create();
+    case "publisher-create":
+        if($_SERVER["REQUEST_METHOD"] == "GET"){
+            $publisher->showFormCreate();
+        }
+        else{
+            $publisher->createPublisher($_POST);
+        }
         break;
-    case "genre-edit":
-        $genre->edit();
+    case "publisher-detail":
+        $publisher->detailPublisher();
+        break;
+    case "publisher-update":
+        $publisher->updatePublisher($_POST,$_REQUEST["id"]);
+    case "review-list":
+        $review->showReview();
+        break;
+    case "review-delete":
+        $review->delete();
         break;
     case "book-list":
         $book->getAll();
@@ -68,6 +88,15 @@ switch ($page){
         $book->delete();
         break;
     default:
+    case "review-create":
+        $review->create();
+        break;
+    case "review-detail":
+        $review->detail();
+        break;
+    case "review-edit":
+        $review->edit();
+        break;
 }
 ?>
 

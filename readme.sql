@@ -40,7 +40,16 @@ CREATE TABLE Roles(
                       id int PRIMARY KEY AUTO_INCREMENT,
                       name varchar(255)
 );
+<<<<<<< HEAD
+
+CREATE  table Users(
+    id int primary key AUTO_INCREMENT,
+    Student_code int not null,
+    Role_id int not null
+);
+=======
 alter table Books
     add foreign key (rublisher_id) references Publishers(id);
+>>>>>>> 7b341a9697f81d5723ff837daf79613f1a616c71
 
 alter table Books add constraint foreign key (genre_id) references genres(id);
