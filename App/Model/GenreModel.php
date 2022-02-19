@@ -6,6 +6,7 @@ class GenreModel extends BaseModel
 {
     public $table = "genres";
 
+
     public function create($data)
     {
         $sql = "insert into genres(name) values (?)";

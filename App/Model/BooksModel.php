@@ -19,6 +19,15 @@ class BooksModel extends BaseModel
 
     }
 
+    public function deleteGenreId($id)
+    {
+        $sql = "delete from Books where genre_id = ?";
+
+        $stmt = $this->connect->prepare($sql);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+    }
+
     public function getById($id)
     {
       $sql = "select Books.id as id, Books.name as name, Books.quantity as quantity,  genres.name as genre, Authors.name as author,
