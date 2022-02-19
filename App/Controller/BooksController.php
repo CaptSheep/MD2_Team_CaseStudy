@@ -14,6 +14,8 @@ class BooksController
     public function getAll()
     {
         $books = $this->book->getAll();
+        var_dump($books);
+        die();
 
         include "App/View/book/list.php";
     }

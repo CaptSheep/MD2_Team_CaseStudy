@@ -5,6 +5,7 @@ use App\Model\GenreModel;
 class GenreController
 {
     public $genre;
+
     public function __construct()
     {
         $this->genre = new GenreModel();

@@ -8,15 +8,15 @@ class GenreModel extends BaseModel
 
     public function create($data)
     {
-        $sql = "insert into genres(name) values (?)";
+        $sql = "insert into $this->table values (?)";
         $stmt = $this->connect->prepare($sql);
-        $stmt->bindParam(1,$data["name"] );
+        $stmt->bindParam(1,$data["name"]);
         $stmt->execute();
     }
 
     public function edit($data, $id)
     {
-        $sql = "update genres set name = ? where id = ?";
+        $sql = "update $this->table set name = ? where id = ?";
         $stmt=$this->connect->prepare($sql);
         $stmt->bindParam(1, $data["name"]);
         $stmt->bindParam(2, $id);
