@@ -87,7 +87,21 @@ switch ($page){
         $review->edit();
         break;
 
-
+    case "genre-list":
+        $genre->getAll();
+        break;
+    case "genre-delete":
+        $genre->delete();
+        break;
+    case "genre-detail":
+        $genre->getById();
+        break;
+    case "genre-create":
+        $genre->create();
+        break;
+    case "genre-edit":
+        $genre->edit();
+        break;
     case "book-list":
         $book->getAll();
         break;
