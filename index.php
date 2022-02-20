@@ -53,6 +53,7 @@ switch ($page){
     case "author-update":
         $author->updateAuthor($_POST,$_REQUEST["id"]);
         break;
+
     case "publisher-list":
         $publisher->getAllPublisher();
         break;
@@ -102,6 +103,7 @@ switch ($page){
     case "genre-edit":
         $genre->edit();
         break;
+
     case "book-list":
         $book->getAll();
         break;
