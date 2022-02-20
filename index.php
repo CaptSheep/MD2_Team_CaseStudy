@@ -6,19 +6,17 @@ use App\Controller\BooksController;
 use App\Controller\GenreController;
 use App\Controller\PublishersController;
 use App\Controller\ReviewsController;
+use App\Controller\UsersController;
 
 $author = new AuthorsController;
 $publisher = new PublishersController;
 $review = new ReviewsController;
-
 $user = new UsersController;
-$page = $_GET["page"] ?? "";
-
 $book = new BooksController();
 $genre = new GenreController();
 
 $page = $_GET["page"] ?? "";
-$page =$_GET["page"] ?? "";
+
 
 ?>
 <!doctype html>
@@ -101,18 +99,8 @@ switch ($page) {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $author->showFormCreate();
         } else {
-
-
-        if($_SERVER["REQUEST_METHOD"] == "GET"){
-        if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            $author->showFormCreate();
-        } else {
-        }
-        else{
-
-
             $author->createAuthors($_POST);
-        }
+            }
         break;
     case "author-delete":
         $author->deleteAuthor($_REQUEST["id"]);
@@ -148,16 +136,6 @@ switch ($page) {
     case "publisher-update":
         $publisher->updatePublisher($_POST, $_REQUEST["id"]);
         break;
-
-
-        $publisher->updatePublisher($_POST, $_REQUEST["id"]);
-
-
-        $publisher->updatePublisher($_POST,$_REQUEST["id"]);
-
-
-
-
     case "review-list":
         $review->showReview();
         break;
@@ -173,17 +151,6 @@ switch ($page) {
     case "review-edit":
         $review->edit();
         break;
-    case "review-create":
-        $review->create();
-        break;
-    case "review-detail":
-        $review->detail();
-        break;
-    case "review-edit":
-        $review->edit();
-        break;
-
-
     case "user-list":
         $user->showUser();
         break;
@@ -199,9 +166,6 @@ switch ($page) {
     case "user-edit":
         $user->editUser();
         break;
-
-
-
     case "genre-list":
         $genre->getAll();
         break;
@@ -227,24 +191,12 @@ switch ($page) {
     case "book-delete":
         $book->delete();
         break;
-    case "genre-list":
-        $genre->getAll();
-        break;
-    case "genre-create":
-        $genre->create();
     case "book-create":
         $book->create();
         break;
-    case "genre-detail":
-        $genre->getById();
     case "book-edit":
         $book->edit();
         break;
-    case "genre-edit":
-        $genre->edit();
-        break;
-
-
     default:
 
 
