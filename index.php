@@ -6,6 +6,7 @@ require "vendor/autoload.php";
 
 use App\Controller\AuthorsController;
 use App\Controller\BooksController;
+use App\Controller\BorrowController;
 use App\Controller\GenreController;
 use App\Controller\PublishersController;
 use App\Controller\ReviewsController;
@@ -17,6 +18,7 @@ $review = new ReviewsController;
 $user = new UsersController;
 $book = new BooksController();
 $genre = new GenreController();
+$borrow = new BorrowController();
 $page = $_GET["page"] ?? "";
 
 
@@ -64,6 +66,7 @@ $page = $_GET["page"] ?? "";
                     <a class="dropdown-item" href="index.php?page=publisher-list">Publishers</a>
                     <a class="dropdown-item" href="index.php?page=review-list">Review</a>
                     <a class="dropdown-item" href="index.php?page=user-list">User</a>
+                    <a class="dropdown-item" href="index.php?page=user-borrow-list">User Borrow</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
@@ -154,6 +157,20 @@ case
     case "user-edit":
         $user->editUser();
         break;
+    case "user-borrow-list":
+        $user->showListUser();
+        break;
+    case "borrow-register":
+        $id = $_GET["id"] ?? $_SESSION["borrow-user"];
+        $borrow->borrow($id);
+        break;
+    case "add-book-borrow":
+        $borrow->addBookToBorrow($_GET["id"]);
+        break;
+    case "clear-borrow":
+        $borrow->clearBorrowList();
+        break;
+
     case "genre-list":
         $genre->getAll();
         break;

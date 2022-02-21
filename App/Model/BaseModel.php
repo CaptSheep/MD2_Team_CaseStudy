@@ -19,6 +19,8 @@ class BaseModel
         $stmt = $this->connect->query($sql);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
+
     public function getById($id){
         $sql = "select * from $this->table where id =$id";
         $stmt = $this->connect->query($sql);
