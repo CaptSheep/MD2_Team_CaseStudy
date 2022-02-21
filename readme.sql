@@ -46,3 +46,10 @@ alter table Books
 >>>>>>> 7b341a9697f81d5723ff837daf79613f1a616c71
 
 alter table Books add constraint foreign key (genre_id) references genres(id);
+
+
+ALTER TABLE Books add publisher_id int not null
+
+ALTER TABLE Books ADD FOREIGN KEY (publisher_id) REFERENCES Publishers(id);
+
+ALTER TABLE Books ADD FOREIGN KEY (publisher_id) REFERENCES Publishers(id);

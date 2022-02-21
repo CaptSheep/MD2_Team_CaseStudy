@@ -29,7 +29,7 @@ class ReviewsController
     {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             include "App/View/review/create.php";
-        } else {
+        } else{
             $this->review->createReview($_POST);
             header("location:index.php?page=review-list");
         }
