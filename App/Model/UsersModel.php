@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use PDO;
+
 class UsersModel extends BaseModel
 {
     public $table = "Users";
@@ -15,6 +17,13 @@ class UsersModel extends BaseModel
         $stmt->bindParam(1, $data["student"]);
         $stmt->bindParam(2, $data["role"]);
         $stmt->execute();
+    }
+
+    public function getAllUser()
+    {
+        $sql = "select * from $this->table where Role_id = 2";
+        $stmt = $this->connect->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
 
