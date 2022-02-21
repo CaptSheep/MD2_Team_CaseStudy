@@ -179,7 +179,8 @@ switch ($page) {
         break;
 
 
-    default: header("location:index.php?page=book-list");
+    default:
+        header("location:index.php?page=book-list");
 
 }
 ?>
