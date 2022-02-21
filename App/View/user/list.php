@@ -12,7 +12,7 @@
     <?php foreach ($users as $key => $user): ?>
         <tr>
             <td><?php echo $key + 1 ?></td>
-            <td><?php echo $user->Student_code ?></td>
+            <td><?php echo $user->username ?></td>
             <td><?php echo $user->Role_id ?></td>
             <td><a href="index.php?page=user-detail&id=<?php echo $user->id ?>">Detail</a></td>
             <td onclick="return confirm('Are you sure?')"><a href="index.php?page=user-delete&id=<?php echo $user->id ?>">Delete</a></td>

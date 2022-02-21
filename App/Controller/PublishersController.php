@@ -44,4 +44,10 @@ class PublishersController
             header("location:index.php?page=publisher-list");
         }
    }
+
+    public function deletePublisher()
+    {
+        $this->publisher->deleteById($_GET["id"]);
+        header("location:index.php?page=publisher-list");
+   }
 }

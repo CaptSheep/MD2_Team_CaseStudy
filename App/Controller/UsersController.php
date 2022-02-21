@@ -51,4 +51,29 @@ class UsersController
             header("location:index.php?page=user-list");
         }
     }
+
+    public function login($request)
+    {
+        if($this->userController->checkLogin($request["username"],$request["password"])){
+            $_SESSION["user"] = $this->userController->getAll();
+            header("location:index.php");
+        }
+        else{
+            header("location:index.php?page=auth-login");
+        }
+    }
+
+    public function showformLogin()
+    {
+        if(isset($_SESSION["user"])){
+           header("location:index.php");
+        }
+        include "App/View/auth/login.php";
+    }
+    public function logout(){
+        if (isset($_SESSION["user"])){
+            unset($_SESSION["user"]);
+            header("location:index.php?page=auth-login");
+        }
+    }
 }

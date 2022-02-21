@@ -4,12 +4,12 @@ namespace App\Model;
 
 class GenreModel extends BaseModel
 {
-    public $table = "genres";
+    public $table = "Genres";
 
 
     public function create($data)
     {
-        $sql = "insert into $this->table values (?)";
+        $sql = "insert into $this->table(name) values (?)";
         $stmt = $this->connect->prepare($sql);
         $stmt->bindParam(1,$data["name"]);
         $stmt->execute();

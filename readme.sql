@@ -1,66 +1,55 @@
-drop table Authors;
-create table Authors (
-                         id int auto_increment primary key ,
-                         name varchar(255),
-                         info varchar(500)
+create table Authors(
+                        id int primary key auto_increment,
+                        name varchar(255),
+                        info varchar(255)
 );
 
-drop table genres;
-
-create table Genres(
-                       id int auto_increment primary key ,
-                       name varchar(255)
-
-);
-
-drop table Publishers;
-
-create table Publishers(
-                           id int auto_increment primary key ,
-                           name varchar(255)
-
-);
-
-drop table Reviews;
-
-create table Reviews(
-                        id int auto_increment primary key ,
-                        content varchar(1000),
-                        book_id int
-
-);
-
-drop table Books;
-
-create table Books(
-                      id int auto_increment primary key ,
-                      name varchar(255),
-                      quantity int not null,
-                      genre_id int not null ,
-                      author_id int not null ,
-                      review_id int not null ,
-                      publisher_id int not null ,
-                      foreign key (genre_id) references Genres(id),
-                      foreign key (author_id) references Authors(id),
-                      foreign key (review_id) references Reviews(id),
-                      foreign key (publisher_id) references Publishers(id)
-
-);
-
-drop table Roles;
-
-create table Roles(
+create table Genre(
                       id int primary key auto_increment,
                       name varchar(255)
 );
-drop table Users;
-create table Users (
-                       id int auto_increment primary key ,
-                       username varchar(255),
-                       password varchar(255),
-                       role_id int not null ,
-                       foreign key (role_id) references Roles(id)
+
+create table Reviews(
+                        id int primary key auto_increment,
+                        content varchar(1000),
+                        book_id int
 );
 
+create table Publishers(
+                           id int auto_increment primary key,
+                           name varchar(255)
+);
+
+create table Books(
+                      id int primary key auto_increment,
+                      name varchar(1000),
+                      quantity int not null,
+                      genre_id int not null ,
+                      author_id int not null,
+                      review_id int not null,
+                      publisher_id int not null,
+                      foreign key (genre_id) references Genre(id),
+                      foreign key (author_id) references Authors(id),
+                      foreign key (review_id) references Reviews(id)
+);
+
+CREATE TABLE Roles(
+                      id int PRIMARY KEY AUTO_INCREMENT,
+                      name varchar(255)
+);
+<<<<<<< HEAD
 
 
+=======
+alter table Books
+    add foreign key (rublisher_id) references Publishers(id);
+>>>>>>> 7b341a9697f81d5723ff837daf79613f1a616c71
+
+alter table Books add constraint foreign key (genre_id) references genres(id);
+
+
+ALTER TABLE Books add publisher_id int not null
+
+ALTER TABLE Books ADD FOREIGN KEY (publisher_id) REFERENCES Publishers(id);
+
+ALTER TABLE Books ADD FOREIGN KEY (publisher_id) REFERENCES Publishers(id);
