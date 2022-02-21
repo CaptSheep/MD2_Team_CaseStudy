@@ -33,6 +33,15 @@ $genre = new GenreController();
 //$genre = new GenreController();
 
 
+
+
+$author = new AuthorsController;
+$publisher = new PublishersController;
+$review = new ReviewsController;
+$user = new UsersController;
+$book = new BooksController();
+$genre = new GenreController();
+
 $page =$_GET["page"] ?? "";
 
 ?>
@@ -73,12 +82,11 @@ switch ($page) {
 
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $author->showFormCreate();
-        }
-        else{
 
+        } else {
 
             $author->createAuthors($_POST);
-        }
+            }
         break;
     case "author-delete":
         $author->deleteAuthor($_REQUEST["id"]);
@@ -139,9 +147,6 @@ switch ($page) {
     case "user-edit":
         $user->editUser();
         break;
-
-
-
     case "genre-list":
         $genre->getAll();
         break;
@@ -168,13 +173,13 @@ switch ($page) {
         $book->delete();
         break;
 
+
     case "book-create":
         $book->create();
         break;
 
 
     default: header("location:index.php?page=book-list");
-
 
 }
 ?>
