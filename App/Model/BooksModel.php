@@ -28,6 +28,7 @@ class BooksModel extends BaseModel
         $stmt->execute();
     }
 
+
     public function getById($id)
     {
       $sql = "select Books.id as id, Books.name as name, Books.quantity as quantity,  genres.name as genre, Authors.name as author,
