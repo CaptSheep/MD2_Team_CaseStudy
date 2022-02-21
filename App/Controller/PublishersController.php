@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use App\Model\BooksModel;
 use App\Model\PublishersModel;
 class PublishersController
 {
@@ -47,6 +48,9 @@ class PublishersController
 
     public function deletePublisher()
     {
+        $book = new BooksModel();
+        $book->deleteByPublisher($_GET["id"]);
+
         $this->publisher->deleteById($_GET["id"]);
         header("location:index.php?page=publisher-list");
    }

@@ -19,14 +19,14 @@ class BooksModel extends BaseModel
 
     }
 
-    public function deleteGenreId($id)
+    public function showAll()
     {
-        $sql = "delete from Books where genre_id = ?";
-
-        $stmt = $this->connect->prepare($sql);
-        $stmt->bindParam(1, $id);
-        $stmt->execute();
+        $sql = "select id, name from Books ";
+        $stmt = $this->connect->query($sql);
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
+
+
 
 
     public function getById($id)
@@ -46,9 +46,43 @@ class BooksModel extends BaseModel
 
     public function deleteById($id)
     {
-        $sql="delete from Books where Books.id = $id";
+        $sql="delete from Books where id = $id";
         $this->connect->query($sql);
-//        header("location:index.php?page=book-list");
+
+    }
+
+    public function deleteByGenre($genre_id)
+    {
+
+        $sql = "delete from Books where genre_id = ?";
+        $stmt = $this->connect->prepare($sql);
+        $stmt->bindParam(1, $genre_id);
+        $stmt->execute();
+
+    }
+
+    public function deleteByAuthor($author)
+    {
+        $sql = "delete from Books where author_id = ?";
+        $stmt = $this->connect->prepare($sql);
+        $stmt->bindParam(1, $author);
+        $stmt->execute();
+    }
+
+    public function deleteByPublisher($publisher)
+    {
+        $sql = "delete from Books where publisher_id = ?";
+        $stmt = $this->connect->prepare($sql);
+        $stmt->bindParam(1, $publisher);
+        $stmt->execute();
+    }
+
+    public function deleteByReview($review)
+    {
+        $sql = "delete from Books where review_id = ?";
+        $stmt = $this->connect->prepare($sql);
+        $stmt->bindParam(1, $review);
+        $stmt->execute();
     }
 
     public function create($data)

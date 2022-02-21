@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller;
 use App\Model\AuthorsModel;
+use App\Model\BooksModel;
+
 class AuthorsController
 {
     public  $author;
@@ -29,6 +31,8 @@ class AuthorsController
 
     public function deleteAuthor($id)
     {
+        $book = new BooksModel();
+        $book->deleteByAuthor($id);
         $this->author->deleteById($id);
         header("location:index.php?page=author-list");
     }

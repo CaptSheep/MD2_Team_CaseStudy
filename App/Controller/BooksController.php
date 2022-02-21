@@ -34,9 +34,9 @@ class BooksController
         header("location:index.php?page=book-list");
     }
 
+
     public function create()
     {
-
         if($_SERVER["REQUEST_METHOD"]=="GET"){
             $genre = new GenreModel();
             $genres= $genre->getAll();
@@ -53,6 +53,7 @@ class BooksController
             include "App/View/book/create.php";
         }else{
             $this->book->create($_POST);
+
             header("location:index.php?page=book-list");
         }
     }

@@ -6,6 +6,7 @@ class AuthorsModel extends BaseModel
 {
     public $table = "Authors";
 
+
     public function createAuthors($data)
     {
         $sql = "insert into $this->table(name,info) values (?,?)";

@@ -1,5 +1,5 @@
 <?php
-if (!isset($_SESSION)){
+if (!isset($_SESSION)) {
     session_start();
 }
 require "vendor/autoload.php";
@@ -88,17 +88,17 @@ $page = $_GET["page"] ?? "";
 </nav>
 <?php
 switch ($page) {
-case "author-list":
-    $author->getAllAuthor();
-    break;
-case "author-create":
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $author->showFormCreate();
-} else {
-        $author->createAuthors($_POST);
-    }
-    break;
-case
+    case "author-list":
+        $author->getAllAuthor();
+        break;
+    case "author-create":
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            $author->showFormCreate();
+        } else {
+            $author->createAuthors($_POST);
+        }
+        break;
+    case
     "author-delete":
         $author->deleteAuthor($_REQUEST["id"]);
         break;
@@ -127,6 +127,7 @@ case
     case "publisher-update":
         $publisher->updatePublisher($_POST, $_REQUEST["id"]);
         break;
+
     case "review-list":
         $review->showReview();
         break;
@@ -142,6 +143,7 @@ case
     case "review-edit":
         $review->edit();
         break;
+
     case "user-list":
         $user->showUser();
         break;
@@ -160,6 +162,7 @@ case
     case "user-borrow-list":
         $user->showListUser();
         break;
+
     case "borrow-register":
         $id = $_GET["id"] ?? $_SESSION["borrow-user"];
         $borrow->borrow($id);
@@ -186,6 +189,8 @@ case
     case "genre-edit":
         $genre->edit();
         break;
+
+
     case "book-create":
         $book->create();
         break;
@@ -198,11 +203,15 @@ case
     case "book-delete":
         $book->delete();
         break;
+    case "book-edit":
+        $book->edit();
+        break;
+
+
     case "login":
-        if ($_SERVER["REQUEST_METHOD"] == "GET"){
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $user->showformLogin();
-        }
-        else{
+        } else {
             $user->login($_REQUEST);
         }
         break;
@@ -211,8 +220,14 @@ case
         break;
 }
 ?>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+        crossorigin="anonymous"></script>
 </body>
 </html>

@@ -19,8 +19,9 @@ class GenreController
     }
 
     public function delete()
-    {  $book = new BooksModel();
-        $book->deleteById($_REQUEST["id"]);
+    {   $book = new BooksModel();
+
+        $book->deleteByGenre($_REQUEST["id"]);
         $this->genre->deleteById($_REQUEST["id"]);
         header("location:index.php?page=genre-list");
     }
@@ -52,6 +53,5 @@ class GenreController
             header("location:index.php?page=genre-list");
         }
     }
-
 
 }
